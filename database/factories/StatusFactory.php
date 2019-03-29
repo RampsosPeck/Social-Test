@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use App\User;
+ use App\Models\Status;
 $factory->define(App\Models\Status::class, function (Faker $faker) {
     return [
         'body' => $faker->paragraph,

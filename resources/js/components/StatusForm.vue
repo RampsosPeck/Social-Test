@@ -1,19 +1,27 @@
 <template>
-    <div>
-    <form  @submit.prevent="submit">
+    <div v-if="isAuthenticate">
+        <form  @submit.prevent="submit">
 
-        <div class="card-body">
-            <textarea v-model="body" el class="form-control border-0 bg-light" name="body" placeholder="Qué estás pensando Jorge?"></textarea>
-        </div>
-        <div class="card-footer">
-            <button class="btn btn-primary" id="create-status">Publicar</button>
-        </div>
-    </form>
-
+            <div class="card-body" >
+                <textarea v-model="body"
+                          class="form-control border-0 bg-light"
+                          name="body"
+                          :placeholder="`¿Qué estás pensando ${currentUser.name}?`"></textarea>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" id="create-status">Publicar</button>
+            </div>
+        </form>
     </div>
+        <div v-else class="card-body">
+            <a href="/login">Debes hacer login</a>
+        </div>
+
 </template>
 
 <script>
+
+
     export default {
         name: "StatusForm",
         data(){
